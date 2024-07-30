@@ -65,3 +65,6 @@ font-size: 50px;
     transform: translate(2px, 2px);
 }
 
+.tabs:hover {
+    background-color: #eeedd3;
+}
