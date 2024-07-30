@@ -1,0 +1,67 @@
+@font-face {
+    font-family: 'MyFont';
+    src: url('./todo-font.otf');
+    font-weight: 600;
+    font-style: normal;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'MyFont';
+}
+
+body {
+    display: flex;
+    background-color: #fffdd0;
+}
+
+#sidebar {
+    border-right: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
+    
+}
+
+#sideBarHeader {
+    display: flex;
+}
+
+#logo {
+font-size: 50px;
+}
+
+#sideIcon {
+    margin-right: 5px;
+    margin-left: 6vh;
+}
+
+#myPaper {
+    height: 50px;
+}
+
+
+    
+
+
+
+.tabs {
+    height: 65px;
+    width: 135px;
+    background-color: #fffdd0;
+    margin: 10px;
+    border-radius: 15px;
+    box-shadow: 3px 1px 1px black;
+    color: royalblue;
+    font-family: 'MyFont';
+    font-size: 25px;
+    align-self: center;
+
+
+}
+
+.tabs:active {
+    transform: translate(2px, 2px);
+}
+
