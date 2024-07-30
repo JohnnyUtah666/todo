@@ -21,15 +21,21 @@ body {
     display: flex;
     flex-direction: column;
     width: 25vw;
+    min-width: 270px;
     
 }
 
 #sideBarHeader {
     display: flex;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid black;
+    margin-bottom: 25px;
 }
 
 #logo {
 font-size: 50px;
+
 }
 
 #sideIcon {
