@@ -13,6 +13,41 @@ myPaper.setAttribute('id', 'myPaper');
 let tasks = [];
 let projects = [];
 
+function createTask (name, dueDate, completed, notes) {
+    return {name, dueDate, completed, notes};
+}
+
+function createProject (name, subTasks) {
+    subTasks = [];
+    return {name, subTasks};
+}
+
+function addTask (task) {
+    tasks.push(task);
+}
+
+function addProject (project) {
+    projects.push(project);
+}
+
+function addTaskToProject (project, task) {
+    project.subTasks.push(task);
+}
+
+let firstProject = createProject("First Project");
+let firstTask = createTask("first task", "10/31", 'yes', "just get it done, alright?");
+let secondTask = createTask("secondTask", "10/29", 'no', "This is important too");
+
+addTask(firstTask);
+addTask(secondTask);
+
+addTaskToProject(firstProject, firstTask)
+
+
+console.log(firstProject);
+
+
+
     let sideBar = document.createElement('div');
     sideBar.setAttribute('id', 'sideBar');
     document.body.appendChild(sideBar);
