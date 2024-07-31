@@ -1,7 +1,9 @@
 import "./style.css";
 import { allTasks } from "./tasksTab";
+import { displayAllTasks } from "./tasksTab";
 import { allProjects } from "./projectsTab";
 import { completedTasks } from "./completed";
+import { displayCompletedTasks } from "./completed";
 import Paper from './notes.png';
 import Stripes from './bullets.png';
 const myPaper = new Image();
@@ -41,10 +43,13 @@ let secondTask = createTask("secondTask", "10/29", 'no', "This is important too"
 addTask(firstTask);
 addTask(secondTask);
 
+
+
 addTaskToProject(firstProject, firstTask)
+console.log(firstTask.completed);
 
 
-console.log(firstProject);
+
 
 
 
@@ -77,6 +82,7 @@ console.log(firstProject);
             tasksTab.textContent = "All Tasks";
             tasksTab.addEventListener('click', () => {
                 allTasks();
+                displayAllTasks(tasks);
             })
 
             let projectsTab = document.createElement('button');
@@ -95,6 +101,7 @@ console.log(firstProject);
             completedTab.textContent = "Completed Tasks"
             completedTab.addEventListener('click', () => {
                 completedTasks();
+                displayCompletedTasks(tasks);
             })
 
     let content = document.createElement('div');
@@ -102,3 +109,4 @@ console.log(firstProject);
     document.body.appendChild(content);
 
     allTasks();
+    displayAllTasks(tasks)
