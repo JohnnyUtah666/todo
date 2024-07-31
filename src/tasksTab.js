@@ -1,3 +1,23 @@
+const createModal = () => {
+    let taskModal = document.createElement('dialog');
+    document.body.appendChild(taskModal);
+    let modalText = document.createTextNode("Here's the modal");
+
+    let closeModalButton = document.createElement('button');
+    closeModalButton.textContent = 'X';
+    closeModalButton.addEventListener('click', () => {
+        taskModal.remove();
+    });
+
+    taskModal.appendChild(modalText);
+    taskModal.appendChild(closeModalButton);
+    taskModal.showModal()
+}
+
+const newTask = () => {
+    createModal();
+}
+
 const allTasks = () => {
     document.getElementById("content").innerHTML = "";
     let tasksHeader = document.createElement('div');
@@ -9,12 +29,11 @@ const allTasks = () => {
     newTaskButton.setAttribute('id', 'newTaskButton');
     newTaskButton.textContent = "+ New Task";
     content.appendChild(newTaskButton);
-
-        const addTask = () => {
-            
-        }
-    
+    newTaskButton.addEventListener('click', () => {
+        newTask();
+    })
 }
+
 
 const displayAllTasks = (array) => {
         
@@ -55,3 +74,4 @@ const displayAllTasks = (array) => {
 
 export {allTasks}
 export {displayAllTasks}
+export {newTask}
