@@ -15,8 +15,8 @@ myPaper.setAttribute('id', 'myPaper');
 let tasks = [];
 let projects = [];
 
-function createTask (name, dueDate, completed, notes) {
-    return {name, dueDate, completed, notes};
+function createTask (name, dueDate, completed, notes, priority) {
+    return {name, dueDate, completed, notes, priority};
 }
 
 function createProject (name, subTasks) {
@@ -37,8 +37,8 @@ function addTaskToProject (project, task) {
 }
 
 let firstProject = createProject("First Project");
-let firstTask = createTask("first task", "10/31", 'yes', "just get it done, alright?");
-let secondTask = createTask("secondTask", "10/29", 'no', "This is important too");
+let firstTask = createTask("first task", "10/31", 'yes', "just get it done, alright?", "High");
+let secondTask = createTask("secondTask", "10/29", 'no', "This is important too", "Medium");
 
 addTask(firstTask);
 addTask(secondTask);
