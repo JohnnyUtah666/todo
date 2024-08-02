@@ -1,7 +1,23 @@
 const createModal = () => {
     let taskModal = document.createElement('dialog');
     document.body.appendChild(taskModal);
-    let modalText = document.createTextNode("Here's the modal");
+    
+    let taskForm = document.createElement('form');
+    taskForm.setAttribute('id', 'taskForm')
+
+    let taskName = document.createElement('input');
+    taskName.setAttribute('type', 'text');
+    taskName.setAttribute('id', 'taskname');
+
+    let taskDueDate = document.createElement('input');
+    taskDueDate.setAttribute('type', 'date');
+    taskDueDate.setAttribute('id', 'taskDueDate');
+
+    taskForm.appendChild(taskName);
+    taskForm.appendChild(taskDueDate);
+
+    taskModal.appendChild(taskForm);
+
 
     let closeModalButton = document.createElement('button');
     closeModalButton.textContent = 'X';
@@ -9,7 +25,7 @@ const createModal = () => {
         taskModal.remove();
     });
 
-    taskModal.appendChild(modalText);
+    
     taskModal.appendChild(closeModalButton);
     taskModal.showModal()
 }
