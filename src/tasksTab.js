@@ -13,8 +13,41 @@ const createModal = () => {
     taskDueDate.setAttribute('type', 'date');
     taskDueDate.setAttribute('id', 'taskDueDate');
 
+    let radioWrap = document.createElement('div');
+    radioWrap.setAttribute('id', 'radioWrap');
+    const data = {
+        "High": false,
+        "Medium": false,
+        "Low": false,
+    }
+    for (let key in data) {
+        let label = document.createElement("label");
+        label.innerText = key;
+        let input = document.createElement('input');
+        input.type = 'radio';
+        input.name = 'priority'
+        label.appendChild(input);
+        radioWrap.appendChild(label);
+        
+    }
+    
+
+    
+
+    let isTaskCompleted = document.createElement('input');
+    isTaskCompleted.setAttribute('type', 'checkbox');
+    isTaskCompleted.setAttribute('id', 'isTaskCompleted');
+
+    let taskNotes = document.createElement('input');
+    taskNotes.setAttribute('type', 'textarea');
+    taskNotes.setAttribute('rows', '5');
+    taskNotes.setAttribute('id', 'taskNotes');
+
     taskForm.appendChild(taskName);
     taskForm.appendChild(taskDueDate);
+    taskForm.appendChild(radioWrap);
+    taskForm.appendChild(isTaskCompleted);
+    taskForm.appendChild(taskNotes);
 
     taskModal.appendChild(taskForm);
 
