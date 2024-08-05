@@ -82,13 +82,13 @@ font-size: 50px;
     
 }
 
-#tasksHeader {
+#tasksHeader, #projectsHeader, #completedTasksHeader, #viewProjectHeader {
     align-self: center;
     margin-bottom: 5px;
     font-size: 35px;
 }
 
-#newTaskButton {
+#newTaskButton, #newProjectButton, #backButton {
     font-family: 'MyFont';
     width: 130px;
     height: 28px;
@@ -98,15 +98,19 @@ font-size: 50px;
     color: royalblue;
 }
 
-#newTaskButton:hover {
+#newProjectButton {
+    font-size: 16px;
+}
+
+#newTaskButton:hover, #newProjectButton:hover, #backButton:hover  {
     background-color: #eeedd3;
 }
 
-#newTaskButton:active {
+#newTaskButton:active, #newProjectButton:active, #backButton:active {
     transform: translate(2px, 2px);
 }
 
-#taskCard {
+#taskCard, #projectCard {
     display: flex;
     border: 1px solid black;
     border-left:2px solid red;
@@ -117,7 +121,12 @@ font-size: 50px;
     height: 30px;
 }
 
-#displayName, #displayDueDate, #displayCompleted, #displayNotes {
+#projectCard {
+    height: 40px;
+    font-size: 22px;
+}
+
+#displayName, #displayDueDate, #displayCompleted, #displayNotes, #displayPriority, #displayProjectName {
     align-self: center;
     padding-left: 2px;
     

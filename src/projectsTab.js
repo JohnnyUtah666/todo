@@ -1,3 +1,6 @@
+import {projects} from "./index.js";
+import { displayAllTasks } from "./tasksTab.js";
+
 const createProjectModal = () => {
     let projectModal = document.createElement('dialog');
     document.body.appendChild(projectModal);
@@ -35,4 +38,50 @@ const allProjects = () => {
 
 }
 
+const displayProjects = (array) => {
+    for (let item of array) {
+        let projectCard = document.createElement('div');
+        projectCard.setAttribute('id', 'projectCard');
+        content.appendChild(projectCard);
+
+        let displayProjectName = document.createElement('div');
+        displayProjectName.innerText = item.name;
+        displayProjectName.setAttribute('id', 'displayProjectName');
+        projectCard.appendChild(displayProjectName);
+
+        let projectDeleteButton = document.createElement('button');
+            projectDeleteButton.setAttribute('id', 'projectDeleteButton');
+            projectDeleteButton.textContent = "X";
+            projectCard.appendChild(projectDeleteButton);
+
+            projectDeleteButton.addEventListener("click", () => {
+                projects.splice(projects.indexOf(item), 1);
+                document.getElementById("content").innerHTML = "";
+                allProjects();
+                displayProjects(projects);
+            })
+
+        projectCard.addEventListener('click', () => {
+            document.getElementById("content").innerHTML = "";
+
+            let viewProjectHeader = document.createElement('div');
+            viewProjectHeader.setAttribute('id', 'viewProjectHeader');
+            viewProjectHeader.textContent = item.name;
+            content.appendChild(viewProjectHeader);
+
+            let backButton = document.createElement('button');
+            backButton.setAttribute('id', 'backButton');
+            backButton.textContent = "Back";
+            content.appendChild(backButton);
+                backButton.addEventListener("click", () => {
+                    allProjects();
+                    displayProjects(projects);
+                })
+            
+            displayAllTasks(item.subTasks);
+        })
+    }
+}
+
 export {allProjects}
+export {displayProjects}

@@ -2,6 +2,7 @@ import "./style.css";
 import { allTasks } from "./tasksTab";
 import { displayAllTasks } from "./tasksTab";
 import { allProjects } from "./projectsTab";
+import { displayProjects } from "./projectsTab";
 import { completedTasks } from "./completed";
 import { displayCompletedTasks } from "./completed";
 import Paper from './notes.png';
@@ -37,15 +38,22 @@ function addTaskToProject (project, task) {
 }
 
 let firstProject = createProject("First Project");
+let secondProject = createProject("Second Project");
 let firstTask = createTask("first task", "10/31", 'yes', "just get it done, alright?", "High");
 let secondTask = createTask("secondTask", "10/29", 'no', "This is important too", "Medium");
+let thirdTask = createTask("Third Task", "10/28", "no", "Can't forget about this one", "Low");
 
 addTask(firstTask);
 addTask(secondTask);
+addTask(thirdTask);
 
 
 
 addTaskToProject(firstProject, firstTask)
+addTaskToProject(firstProject, thirdTask);
+addTaskToProject(secondProject, secondTask)
+projects.push(firstProject);
+projects.push(secondProject);
 console.log(firstTask.completed);
 
 
@@ -92,6 +100,7 @@ console.log(firstTask.completed);
             projectsTab.textContent = "Projects";
             projectsTab.addEventListener('click', () => {
                 allProjects();
+                displayProjects(projects);
             })
 
             let completedTab = document.createElement('button');
@@ -110,3 +119,5 @@ console.log(firstTask.completed);
 
     allTasks();
     displayAllTasks(tasks)
+
+    export {projects}

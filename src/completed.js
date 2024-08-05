@@ -1,7 +1,7 @@
 const completedTasks = () => {
     document.getElementById("content").innerHTML = "";
     let completedTasks = document.createElement('div');
-    completedTasks.setAttribute('id', 'completedTasks');
+    completedTasks.setAttribute('id', 'completedTasksHeader');
     completedTasks.textContent = 'Completed Tasks'
     content.appendChild(completedTasks);
 
