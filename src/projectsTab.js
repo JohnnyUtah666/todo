@@ -54,7 +54,8 @@ const displayProjects = (array) => {
             projectDeleteButton.textContent = "X";
             projectCard.appendChild(projectDeleteButton);
 
-            projectDeleteButton.addEventListener("click", () => {
+            projectDeleteButton.addEventListener("click", e => {
+                e.stopPropagation();
                 projects.splice(projects.indexOf(item), 1);
                 document.getElementById("content").innerHTML = "";
                 allProjects();
