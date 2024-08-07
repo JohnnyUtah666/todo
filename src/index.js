@@ -121,3 +121,6 @@ console.log(firstTask.completed);
     displayAllTasks(tasks)
 
     export {projects}
+    export {createTask}
+    export {addTask}
+    export {tasks}
