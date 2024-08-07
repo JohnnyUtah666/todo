@@ -1,3 +1,6 @@
+import { addTask, createTask } from ".";
+import { tasks } from ".";
+
 const createModal = () => {
     let taskModal = document.createElement('dialog');
     document.body.appendChild(taskModal);
@@ -43,11 +46,18 @@ const createModal = () => {
     taskNotes.setAttribute('rows', '5');
     taskNotes.setAttribute('id', 'taskNotes');
 
+    let taskSubmitButton = document.createElement('button');
+    taskSubmitButton.setAttribute('type', 'submit');
+    taskSubmitButton.setAttribute('id', 'taskSubmitButton');
+    taskSubmitButton.innerText = 'Create Task';
+
+
     taskForm.appendChild(taskName);
     taskForm.appendChild(taskDueDate);
     taskForm.appendChild(radioWrap);
     taskForm.appendChild(isTaskCompleted);
     taskForm.appendChild(taskNotes);
+    taskForm.appendChild(taskSubmitButton);
 
     taskModal.appendChild(taskForm);
 
@@ -61,6 +71,42 @@ const createModal = () => {
     
     taskModal.appendChild(closeModalButton);
     taskModal.showModal()
+
+    const submitTask = () => {
+       event.preventDefault();
+        let printName = taskName.value;
+        let printDate = taskDueDate.value;
+        let printPriority = input.value;
+        let printCompleted = isTaskCompleted.value;
+        let printNotes =taskNotes.value;
+        
+        if (printName == "") {
+            return false;
+        } else if (printDate == "") {
+            return false;
+        } else if (printPriority == "") {
+            return false;
+        } else if (printCompleted == "") {
+            return false;
+        } else if (printNotes == "") {
+            return false;
+        } else {
+            createTask(printName, printDate, printCompleted, printNotes, printPriority);
+
+            addTask();
+            allTasks();
+            displayAllTasks(tasks);
+            taskModal.close();
+        }
+
+       taskForm.reset();
+    }
+    
+    taskSubmitButton.addEventListener('click', function(event) {
+        submitTask();
+        
+
+    })
 }
 
 const newTask = () => {
