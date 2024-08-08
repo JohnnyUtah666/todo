@@ -27,6 +27,8 @@ const createModal = () => {
         let label = document.createElement("label");
         label.innerText = key;
         let input = document.createElement('input');
+        input.setAttribute('id', key);
+        input.value = key;
         input.type = 'radio';
         input.name = 'priority'
         label.appendChild(input);
@@ -73,33 +75,19 @@ const createModal = () => {
     taskModal.showModal()
 
     const submitTask = () => {
-       event.preventDefault();
-        let printName = taskName.value;
-        let printDate = taskDueDate.value;
-        let printPriority = input.value;
-        let printCompleted = isTaskCompleted.value;
-        let printNotes =taskNotes.value;
+      let printName = taskName.value;
+      let printDate = taskDueDate.value;
+      let printPriority = document.querySelector('input[name="priority"]:checked').value;
+      alert(printPriority);
+
+
         
-        if (printName == "") {
-            return false;
-        } else if (printDate == "") {
-            return false;
-        } else if (printPriority == "") {
-            return false;
-        } else if (printCompleted == "") {
-            return false;
-        } else if (printNotes == "") {
-            return false;
-        } else {
-            createTask(printName, printDate, printCompleted, printNotes, printPriority);
+        
+        
+            
+        
 
-            addTask();
-            allTasks();
-            displayAllTasks(tasks);
-            taskModal.close();
-        }
-
-       taskForm.reset();
+       
     }
     
     taskSubmitButton.addEventListener('click', function(event) {
