@@ -31,8 +31,11 @@ const createModal = () => {
         input.value = key;
         input.type = 'radio';
         input.name = 'priority'
+        input.required = true;
         label.appendChild(input);
         radioWrap.appendChild(label);
+        
+        
         
     }
     
@@ -42,6 +45,8 @@ const createModal = () => {
     let isTaskCompleted = document.createElement('input');
     isTaskCompleted.setAttribute('type', 'checkbox');
     isTaskCompleted.setAttribute('id', 'isTaskCompleted');
+    isTaskCompleted.setAttribute('required', true);
+    
 
     let taskNotes = document.createElement('input');
     taskNotes.setAttribute('type', 'textarea');
@@ -78,7 +83,12 @@ const createModal = () => {
       let printName = taskName.value;
       let printDate = taskDueDate.value;
       let printPriority = document.querySelector('input[name="priority"]:checked').value;
-      alert(printPriority);
+      let printCompleted = document.getElementById('isTaskCompleted').checked;
+      let printNotes = taskNotes.value;
+      
+      
+      
+        console.log(printNotes);
 
 
         
@@ -91,6 +101,7 @@ const createModal = () => {
     }
     
     taskSubmitButton.addEventListener('click', function(event) {
+        event.preventDefault();
         submitTask();
         
 
