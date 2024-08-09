@@ -54,7 +54,7 @@ addTaskToProject(firstProject, thirdTask);
 addTaskToProject(secondProject, secondTask)
 projects.push(firstProject);
 projects.push(secondProject);
-console.log(firstTask.completed);
+
 
 
 
