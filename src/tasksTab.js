@@ -1,6 +1,7 @@
 import { addTask, createTask } from ".";
 import { tasks } from ".";
 
+
 const createModal = () => {
     let taskModal = document.createElement('dialog');
     document.body.appendChild(taskModal);
@@ -46,6 +47,7 @@ const createModal = () => {
     isTaskCompleted.setAttribute('type', 'checkbox');
     isTaskCompleted.setAttribute('id', 'isTaskCompleted');
     isTaskCompleted.setAttribute('required', true);
+    isTaskCompleted.name = "completed";
     
 
     let taskNotes = document.createElement('input');
@@ -83,26 +85,24 @@ const createModal = () => {
       let printName = taskName.value;
       let printDate = taskDueDate.value;
       let printPriority = document.querySelector('input[name="priority"]:checked').value;
-      let printCompleted = document.getElementById('isTaskCompleted').checked;
+      let printCompleted = isTaskCompleted.checked ? "Yes" : "No";
+      console.log(printCompleted);
       let printNotes = taskNotes.value;
-      
-      
-      
-        console.log(printNotes);
 
-
+      let generatedTask = createTask(printName, printDate, printCompleted, printNotes, printPriority);
+        addTask(generatedTask);  
         
         
-        
-            
-        
-
-       
     }
     
     taskSubmitButton.addEventListener('click', function(event) {
+        
         event.preventDefault();
         submitTask();
+        allTasks();
+        displayAllTasks(tasks);
+        taskForm.reset();
+        taskModal.close();
         
 
     })
