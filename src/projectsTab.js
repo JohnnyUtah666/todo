@@ -4,7 +4,15 @@ import { displayAllTasks } from "./tasksTab.js";
 const createProjectModal = () => {
     let projectModal = document.createElement('dialog');
     document.body.appendChild(projectModal);
-    let projectModalText = document.createTextNode("Here's the modal");
+    
+    let newProjectName = document.createElement('input');
+    newProjectName.setAttribute('type', 'text');
+    newProjectName.setAttribute('id', 'newProjectName');
+
+    let submitProjectButton= document.createElement('button');
+    submitProjectButton.setAttribute('type', 'submit');
+    submitProjectButton.setAttribute('id', 'submitProjectButton');
+
 
     let closeProjectModal = document.createElement('button');
     closeProjectModal.textContent = 'X';
@@ -12,7 +20,8 @@ const createProjectModal = () => {
         projectModal.remove();
     });
 
-    projectModal.appendChild(projectModalText);
+    projectModal.appendChild(newProjectName);
+    projectModal.appendChild(submitProjectButton);
     projectModal.appendChild(closeProjectModal);
     projectModal.showModal()
 }

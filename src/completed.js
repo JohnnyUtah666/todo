@@ -1,3 +1,5 @@
+import { tasks } from ".";
+
 const completedTasks = () => {
     document.getElementById("content").innerHTML = "";
     let completedTasks = document.createElement('div');
@@ -14,7 +16,7 @@ const displayCompletedTasks = (array) => {
     
     for (let item of array) {
 
-    if (item.completed == 'yes') { 
+    if (item.completed.toLowerCase() == 'yes') { 
         let taskCard = document.createElement('div');
     taskCard.setAttribute('id', 'taskCard');
     content.appendChild(taskCard);
