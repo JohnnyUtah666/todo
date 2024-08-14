@@ -1,5 +1,7 @@
 import {projects} from "./index.js";
 import { displayAllTasks } from "./tasksTab.js";
+import { createProject } from "./index.js";
+import { addProject } from "./index.js";
 
 const createProjectModal = () => {
     let projectModal = document.createElement('dialog');
@@ -12,6 +14,7 @@ const createProjectModal = () => {
     let submitProjectButton= document.createElement('button');
     submitProjectButton.setAttribute('type', 'submit');
     submitProjectButton.setAttribute('id', 'submitProjectButton');
+    submitProjectButton.innerText = "Create Project";
 
 
     let closeProjectModal = document.createElement('button');
@@ -24,6 +27,15 @@ const createProjectModal = () => {
     projectModal.appendChild(submitProjectButton);
     projectModal.appendChild(closeProjectModal);
     projectModal.showModal()
+
+    submitProjectButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        allProjects();
+        let generatedProject = createProject(newProjectName.value, "");
+        addProject(generatedProject);
+        displayProjects(projects);
+        projectModal.close();
+    });
 }
 
 const newProject = () => {

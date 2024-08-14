@@ -1,5 +1,7 @@
 import { addTask, createTask } from ".";
 import { tasks } from ".";
+import { projects } from ".";
+import { createProject } from ".";
 
 
 const createModal = () => {
@@ -162,11 +164,25 @@ const displayAllTasks = (array) => {
     displayCompleted.appendChild(displayCompletedContent);
     displayNotes.appendChild(displayNotesContent);
 
+    let taskDeleteButton = document.createElement('button');
+            taskDeleteButton.setAttribute('id', 'taskDeleteButton');
+            taskDeleteButton.textContent = "X";
+            taskCard.appendChild(taskDeleteButton);
+
+            taskDeleteButton.addEventListener("click", e => {
+                e.stopPropagation();
+                tasks.splice(tasks.indexOf(item), 1);
+                document.getElementById("content").innerHTML = "";
+                allTasks();
+                displayAllTasks(tasks);
+            })
+
     taskCard.appendChild(displayName);
     taskCard.appendChild(displayDueDate);
     taskCard.appendChild(displayPriority);
     taskCard.appendChild(displayCompleted);
     taskCard.appendChild(displayNotes);
+    taskCard.appendChild(taskDeleteButton);
 
 }
 }

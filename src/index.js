@@ -37,6 +37,8 @@ function addTaskToProject (project, task) {
     project.subTasks.push(task);
 }
 
+
+
 let firstProject = createProject("First Project");
 let secondProject = createProject("Second Project");
 let firstTask = createTask("first task", "10/31", 'yes', "just get it done, alright?", "High");
@@ -124,3 +126,6 @@ projects.push(secondProject);
     export {createTask}
     export {addTask}
     export {tasks}
+    export {createProject}
+    export {addProject}
+    export { displayProjects}
