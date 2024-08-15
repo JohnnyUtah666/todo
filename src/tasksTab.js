@@ -172,6 +172,14 @@ const displayAllTasks = (array) => {
             taskDeleteButton.addEventListener("click", e => {
                 e.stopPropagation();
                 tasks.splice(tasks.indexOf(item), 1);
+                for (let elem of projects) {
+                    for (let subTask of elem.subTasks) {
+                        if (subTask.name == item.name) {
+                            elem.subTasks.splice(elem.subTasks.indexOf(subTask), 1);
+                        }
+                    }
+                }
+
                 document.getElementById("content").innerHTML = "";
                 allTasks();
                 displayAllTasks(tasks);
