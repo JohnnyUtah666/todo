@@ -2,6 +2,7 @@ import { addTask, createTask } from ".";
 import { tasks } from ".";
 import { projects } from ".";
 import { createProject } from ".";
+import { allProjects, displayProjects } from "./projectsTab";
 
 
 const createModal = () => {
@@ -169,20 +170,34 @@ const displayAllTasks = (array) => {
             taskDeleteButton.textContent = "X";
             taskCard.appendChild(taskDeleteButton);
 
-            taskDeleteButton.addEventListener("click", e => {
-                e.stopPropagation();
-                tasks.splice(tasks.indexOf(item), 1);
+
+
+             const removeTaskFromProject = () => {
+                let taskIndicator;
                 for (let elem of projects) {
                     for (let subTask of elem.subTasks) {
                         if (subTask.name == item.name) {
                             elem.subTasks.splice(elem.subTasks.indexOf(subTask), 1);
+                            return taskIndicator = true;
                         }
                     }
                 }
+            }
+
+            taskDeleteButton.addEventListener("click", e => {
+                e.stopPropagation();
+                tasks.splice(tasks.indexOf(item), 1);
+                removeTaskFromProject();
 
                 document.getElementById("content").innerHTML = "";
-                allTasks();
-                displayAllTasks(tasks);
+                if (removeTaskFromProject.taskIndicator = true) {
+                    allProjects();
+                    displayProjects(projects);
+                } else {
+                    allTasks();
+                    displayAllTasks(tasks);
+                }
+                
             })
 
     taskCard.appendChild(displayName);
