@@ -91,6 +91,14 @@ const displayProjects = (array) => {
             viewProjectHeader.textContent = item.name;
             content.appendChild(viewProjectHeader);
 
+            let addSubTaskToProjectButton = document.createElement('button');
+            addSubTaskToProjectButton.setAttribute('id', 'addSubTaskToProjectButton');
+            addSubTaskToProjectButton.innerText = "Add Task";
+            content.appendChild(addSubTaskToProjectButton);
+                addSubTaskToProjectButton.addEventListener("click", () => {
+                    alert("You have clicked the button");
+                })
+
             let backButton = document.createElement('button');
             backButton.setAttribute('id', 'backButton');
             backButton.textContent = "Back";
