@@ -88,7 +88,7 @@ font-size: 50px;
     font-size: 35px;
 }
 
-#newTaskButton, #newProjectButton, #backButton {
+#newTaskButton, #newProjectButton, #backButton, #addSubTaskToProjectButton {
     font-family: 'MyFont';
     width: 130px;
     height: 28px;
@@ -96,17 +96,18 @@ font-size: 50px;
     background-color: #fffdd0;
     font-size: 18px;
     color: royalblue;
+    margin-bottom: 6px;
 }
 
 #newProjectButton {
     font-size: 16px;
 }
 
-#newTaskButton:hover, #newProjectButton:hover, #backButton:hover  {
+#newTaskButton:hover, #newProjectButton:hover, #backButton:hover,  #addSubTaskToProjectButton:hover {
     background-color: #eeedd3;
 }
 
-#newTaskButton:active, #newProjectButton:active, #backButton:active {
+#newTaskButton:active, #newProjectButton:active, #backButton:active, #addSubTaskToProjectButton:active {
     transform: translate(2px, 2px);
 }
 
