@@ -1,4 +1,7 @@
 import { tasks } from ".";
+import { projects } from ".";
+import { allProjects } from "./projectsTab";
+import { displayProjects } from "./projectsTab";
 
 const completedTasks = () => {
     document.getElementById("content").innerHTML = "";
@@ -45,11 +48,44 @@ const displayCompletedTasks = (array) => {
     displayCompleted.appendChild(displayCompletedContent);
     displayNotes.appendChild(displayNotesContent);
 
+    let taskDeleteButton = document.createElement('button');
+            taskDeleteButton.setAttribute('id', 'taskDeleteButton');
+            taskDeleteButton.textContent = "X";
+            
+             const removeTaskFromProject = () => {
+                let taskIndicator;
+                for (let elem of projects) {
+                    for (let subTask of elem.subTasks) {
+                        if (subTask.name == item.name) {
+                            elem.subTasks.splice(elem.subTasks.indexOf(subTask), 1);
+                            return taskIndicator = true;
+                        }
+                    }
+                }
+            }
+
+            taskDeleteButton.addEventListener("click", e => {
+                e.stopPropagation();
+                tasks.splice(tasks.indexOf(item), 1);
+                removeTaskFromProject();
+
+                document.getElementById("content").innerHTML = "";
+                if (removeTaskFromProject.taskIndicator = true) {
+                    allProjects();
+                    displayProjects(projects);
+                } else {
+                    allTasks();
+                    displayAllTasks(tasks);
+                }
+                
+            })
+
     taskCard.appendChild(displayName);
     taskCard.appendChild(displayDueDate);
     taskCard.appendChild(displayPriority);
     taskCard.appendChild(displayCompleted);
     taskCard.appendChild(displayNotes);
+    taskCard.appendChild(taskDeleteButton);
 
     
     } else {
