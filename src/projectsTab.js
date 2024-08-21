@@ -1,7 +1,12 @@
-import {projects} from "./index.js";
+import {addTask, projects} from "./index.js";
 import { displayAllTasks } from "./tasksTab.js";
 import { createProject } from "./index.js";
 import { addProject } from "./index.js";
+import { addTaskToProject } from "./index.js";
+import { createTask } from "./index.js";
+import { tasks } from "./index.js";
+
+
 
 const createProjectModal = () => {
     let projectModal = document.createElement('dialog');
@@ -83,20 +88,114 @@ const displayProjects = (array) => {
                 displayProjects(projects);
             })
 
-        projectCard.addEventListener('click', () => {
-            document.getElementById("content").innerHTML = "";
-
-            let viewProjectHeader = document.createElement('div');
-            viewProjectHeader.setAttribute('id', 'viewProjectHeader');
-            viewProjectHeader.textContent = item.name;
-            content.appendChild(viewProjectHeader);
-
+           const makeProjectCardButtons = () => {
             let addSubTaskToProjectButton = document.createElement('button');
             addSubTaskToProjectButton.setAttribute('id', 'addSubTaskToProjectButton');
             addSubTaskToProjectButton.innerText = "Add Task";
             content.appendChild(addSubTaskToProjectButton);
                 addSubTaskToProjectButton.addEventListener("click", () => {
-                    alert("You have clicked the button");
+                    const createModal = () => {
+                        let taskModal = document.createElement('dialog');
+                        document.body.appendChild(taskModal);
+                        
+                        let taskForm = document.createElement('form');
+                        taskForm.setAttribute('id', 'taskForm')
+                    
+                        let taskName = document.createElement('input');
+                        taskName.setAttribute('type', 'text');
+                        taskName.setAttribute('id', 'taskname');
+                    
+                        let taskDueDate = document.createElement('input');
+                        taskDueDate.setAttribute('type', 'date');
+                        taskDueDate.setAttribute('id', 'taskDueDate');
+                    
+                        let radioWrap = document.createElement('div');
+                        radioWrap.setAttribute('id', 'radioWrap');
+                        const data = {
+                            "High": false,
+                            "Medium": false,
+                            "Low": false,
+                        }
+                        for (let key in data) {
+                            let label = document.createElement("label");
+                            label.innerText = key;
+                            let input = document.createElement('input');
+                            input.setAttribute('id', key);
+                            input.value = key;
+                            input.type = 'radio';
+                            input.name = 'priority'
+                            input.required = true;
+                            label.appendChild(input);
+                            radioWrap.appendChild(label);
+                            }
+                        
+                        let isTaskCompleted = document.createElement('input');
+                        isTaskCompleted.setAttribute('type', 'checkbox');
+                        isTaskCompleted.setAttribute('id', 'isTaskCompleted');
+                        isTaskCompleted.setAttribute('required', true);
+                        isTaskCompleted.name = "completed";
+                        
+                        let taskNotes = document.createElement('input');
+                        taskNotes.setAttribute('type', 'textarea');
+                        taskNotes.setAttribute('rows', '5');
+                        taskNotes.setAttribute('id', 'taskNotes');
+                    
+                        let taskSubmitButton = document.createElement('button');
+                        taskSubmitButton.setAttribute('type', 'submit');
+                        taskSubmitButton.setAttribute('id', 'taskSubmitButton');
+                        taskSubmitButton.innerText = 'Create Task';
+                    
+                    
+                        taskForm.appendChild(taskName);
+                        taskForm.appendChild(taskDueDate);
+                        taskForm.appendChild(radioWrap);
+                        taskForm.appendChild(isTaskCompleted);
+                        taskForm.appendChild(taskNotes);
+                        taskForm.appendChild(taskSubmitButton);
+                    
+                        taskModal.appendChild(taskForm);
+                    
+                    
+                        let closeModalButton = document.createElement('button');
+                        closeModalButton.textContent = 'X';
+                        closeModalButton.addEventListener('click', () => {
+                            taskModal.remove();
+                        });
+                    
+                        
+                        taskModal.appendChild(closeModalButton);
+                        taskModal.showModal()
+                    
+                        const submitTask = () => {
+                          let printName = taskName.value;
+                          let printDate = taskDueDate.value;
+                          let printPriority = document.querySelector('input[name="priority"]:checked').value;
+                          let printCompleted = isTaskCompleted.checked ? "Yes" : "No";
+                          let printNotes = taskNotes.value;
+                    
+                          let generatedTask = createTask(printName, printDate, printCompleted, printNotes, printPriority);
+                            addTaskToProject(item ,generatedTask);  
+                            addTask(generatedTask);    
+                        }
+                        
+                        taskSubmitButton.addEventListener('click', function(event) {
+                            
+                            event.preventDefault();
+                            submitTask();
+                            document.getElementById("content").innerHTML = "";
+
+                            let viewProjectHeader = document.createElement('div');
+                             viewProjectHeader.setAttribute('id', 'viewProjectHeader');
+                            viewProjectHeader.textContent = item.name;
+                            content.appendChild(viewProjectHeader);
+                            makeProjectCardButtons();
+                            taskForm.reset();
+                            taskModal.close();
+                            
+                    
+                        })
+                    }
+                    createModal();
                 })
 
             let backButton = document.createElement('button');
@@ -109,6 +208,22 @@ const displayProjects = (array) => {
                 })
             
             displayAllTasks(item.subTasks);
+           }
+           
+            const projectCardGuts = () => {
+                document.getElementById("content").innerHTML = "";
+
+            let viewProjectHeader = document.createElement('div');
+            viewProjectHeader.setAttribute('id', 'viewProjectHeader');
+            viewProjectHeader.textContent = item.name;
+            content.appendChild(viewProjectHeader);
+            makeProjectCardButtons();
+
+            
+            }
+
+        projectCard.addEventListener('click', () => {
+            projectCardGuts();
         })
     }
 }
