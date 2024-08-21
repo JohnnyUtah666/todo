@@ -70,13 +70,8 @@ const displayCompletedTasks = (array) => {
                 removeTaskFromProject();
 
                 document.getElementById("content").innerHTML = "";
-                if (removeTaskFromProject.taskIndicator = true) {
-                    allProjects();
-                    displayProjects(projects);
-                } else {
-                    allTasks();
-                    displayAllTasks(tasks);
-                }
+                completedTasks();
+                displayCompletedTasks(tasks);
                 
             })
 
