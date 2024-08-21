@@ -129,3 +129,4 @@ projects.push(secondProject);
     export {createProject}
     export {addProject}
     export { displayProjects}
+    export {addTaskToProject}
