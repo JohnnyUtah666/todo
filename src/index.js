@@ -39,30 +39,6 @@ function addTaskToProject (project, task) {
 
 
 
-let firstProject = createProject("First Project");
-let secondProject = createProject("Second Project");
-let firstTask = createTask("first task", "10/31", 'yes', "just get it done, alright?", "High");
-let secondTask = createTask("secondTask", "10/29", 'no', "This is important too", "Medium");
-let thirdTask = createTask("Third Task", "10/28", "no", "Can't forget about this one", "Low");
-
-addTask(firstTask);
-addTask(secondTask);
-addTask(thirdTask);
-
-
-
-addTaskToProject(firstProject, firstTask)
-addTaskToProject(firstProject, thirdTask);
-addTaskToProject(secondProject, secondTask)
-projects.push(firstProject);
-projects.push(secondProject);
-
-
-
-
-
-
-
     let sideBar = document.createElement('div');
     sideBar.setAttribute('id', 'sideBar');
     document.body.appendChild(sideBar);
