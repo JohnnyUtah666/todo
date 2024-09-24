@@ -96,6 +96,7 @@ const displayProjects = (array) => {
                 addSubTaskToProjectButton.addEventListener("click", () => {
                     const createModal = () => {
                         let taskModal = document.createElement('dialog');
+                        taskModal.setAttribute('id', 'taskModal');
                         document.body.appendChild(taskModal);
                         
                         let taskForm = document.createElement('form');

@@ -88,7 +88,7 @@ font-size: 50px;
     font-size: 35px;
 }
 
-#newTaskButton, #newProjectButton, #backButton, #addSubTaskToProjectButton {
+#newTaskButton, #newProjectButton, #backButton, #addSubTaskToProjectButton{
     font-family: 'MyFont';
     width: 130px;
     height: 28px;
@@ -101,6 +101,19 @@ font-size: 50px;
 
 #newProjectButton {
     font-size: 16px;
+}
+
+#taskSubmitButton {
+    
+    align-self: center;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: #fffdd0;
+}
+
+#closeTaskModal {
+    align-self: center;
+    width: 90px;
 }
 
 #newTaskButton:hover, #newProjectButton:hover, #backButton:hover,  #addSubTaskToProjectButton:hover {
@@ -136,4 +149,18 @@ font-size: 50px;
     padding-left: 2px;
     
 
+}
+
+#taskModal {
+    background-color: #fffdd0;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    width: 500px;
+}
+
+#taskForm {
+    display: flex;
+    flex-direction: column;
 }
