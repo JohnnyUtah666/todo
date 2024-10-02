@@ -133,7 +133,8 @@ const createModal = () => {
         allTasks();
         displayAllTasks(tasks);
         taskForm.reset();
-        taskModal.close();
+        taskModal.remove();
+        
         
 
     })

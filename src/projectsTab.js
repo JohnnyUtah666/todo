@@ -10,11 +10,16 @@ import { tasks } from "./index.js";
 
 const createProjectModal = () => {
     let projectModal = document.createElement('dialog');
+    projectModal.setAttribute('id', 'projectModal')
     document.body.appendChild(projectModal);
     
+    let nameDiv = document.createElement('div');
     let newProjectName = document.createElement('input');
     newProjectName.setAttribute('type', 'text');
     newProjectName.setAttribute('id', 'newProjectName');
+    let projectNameLabel = document.createElement('label');
+    projectNameLabel.setAttribute('for', 'newProjectName');
+    projectNameLabel.innerHTML = "Project Name: "
 
     let submitProjectButton= document.createElement('button');
     submitProjectButton.setAttribute('type', 'submit');
@@ -23,12 +28,15 @@ const createProjectModal = () => {
 
 
     let closeProjectModal = document.createElement('button');
+    closeProjectModal.setAttribute('id', 'closeProjectModalButton');
     closeProjectModal.textContent = 'X';
     closeProjectModal.addEventListener('click', () => {
         projectModal.remove();
     });
 
-    projectModal.appendChild(newProjectName);
+    nameDiv.appendChild(projectNameLabel);
+    nameDiv.appendChild(newProjectName);
+    projectModal.appendChild(nameDiv);
     projectModal.appendChild(submitProjectButton);
     projectModal.appendChild(closeProjectModal);
     projectModal.showModal()
@@ -39,7 +47,7 @@ const createProjectModal = () => {
         let generatedProject = createProject(newProjectName.value, "");
         addProject(generatedProject);
         displayProjects(projects);
-        projectModal.close();
+        projectModal.remove();
     });
 }
 
@@ -191,7 +199,7 @@ const displayProjects = (array) => {
                             content.appendChild(viewProjectHeader);
                             makeProjectCardButtons();
                             taskForm.reset();
-                            taskModal.close();
+                            taskModal.remove();
                             
                     
                         })

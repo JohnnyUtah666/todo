@@ -156,8 +156,39 @@ font-size: 50px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    height: 500px;
+    height: 200px;
     width: 500px;
+}
+
+#closeTaskModal {
+    background-color: #fffdd0;
+    border-style: none;
+}
+
+#projectModal {
+    background-color: #fffdd0;;
+    border-radius: 5px;;
+    display: flex;;
+    flex-direction: column;
+}
+
+#submitProjectButton, #taskSubmitButton{
+    background-color: #fffdd0;;
+    border-radius: 15px;;
+    width: 120px;
+    height: 30px;
+    margin: 10px;
+    align-self: center;
+}
+
+#closeProjectModalButton {
+    background-color: #fffdd0;;
+    border: none;
+}
+
+#newProjectName {
+    height: 30px;
+    font-size: 20px;
 }
 
 #taskForm {
