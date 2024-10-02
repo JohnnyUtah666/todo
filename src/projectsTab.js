@@ -109,17 +109,35 @@ const displayProjects = (array) => {
                         
                         let taskForm = document.createElement('form');
                         taskForm.setAttribute('id', 'taskForm')
-                    
+
+
+                        let nameDiv = document.createElement('div');
                         let taskName = document.createElement('input');
                         taskName.setAttribute('type', 'text');
                         taskName.setAttribute('id', 'taskname');
-                    
+                        let nameLabel = document.createElement('label');
+                        nameLabel.setAttribute('for', 'taskName');
+                        nameLabel.innerHTML = "Task Name: ";
+                        nameDiv.appendChild(nameLabel);
+                        nameDiv.appendChild(taskName);
+
+                        let dateDiv = document.createElement('div');
                         let taskDueDate = document.createElement('input');
                         taskDueDate.setAttribute('type', 'date');
                         taskDueDate.setAttribute('id', 'taskDueDate');
-                    
+                        let dateLabel = document.createElement('label');
+                        dateLabel.setAttribute('for', 'taskDueDate');
+                        dateLabel.innerHTML = "Due Date: ";
+                        dateDiv.appendChild(dateLabel);
+                        dateDiv.appendChild(taskDueDate);
+
+                        
                         let radioWrap = document.createElement('div');
                         radioWrap.setAttribute('id', 'radioWrap');
+                        let radioLabel = document.createElement('label');
+                        radioLabel.setAttribute('for', 'radioWrap');
+                        radioLabel.innerHTML = "Priority: ";
+                        radioWrap.appendChild(radioLabel);
                         const data = {
                             "High": false,
                             "Medium": false,
@@ -138,16 +156,29 @@ const displayProjects = (array) => {
                             radioWrap.appendChild(label);
                             }
                         
+                        let completedDiv = document.createElement('div');
                         let isTaskCompleted = document.createElement('input');
                         isTaskCompleted.setAttribute('type', 'checkbox');
                         isTaskCompleted.setAttribute('id', 'isTaskCompleted');
                         isTaskCompleted.setAttribute('required', true);
                         isTaskCompleted.name = "completed";
-                        
+                        let completedLabel = document.createElement('label');
+                        completedLabel.setAttribute('for', 'isTaskCompleted');
+                        completedLabel.innerHTML = "Is task completed?: ";
+                        completedDiv.appendChild(completedLabel);
+                        completedDiv.appendChild(isTaskCompleted);
+
+
+                        let notesDiv = document.createElement('div');
                         let taskNotes = document.createElement('input');
                         taskNotes.setAttribute('type', 'textarea');
                         taskNotes.setAttribute('rows', '5');
                         taskNotes.setAttribute('id', 'taskNotes');
+                        let notesLabel = document.createElement('label');
+                        notesLabel.setAttribute('for', 'taskNotes');
+                        notesLabel.innerHTML = "Notes: ";
+                        notesDiv.appendChild(notesLabel);
+                        notesDiv.appendChild(taskNotes);
                     
                         let taskSubmitButton = document.createElement('button');
                         taskSubmitButton.setAttribute('type', 'submit');
@@ -155,11 +186,11 @@ const displayProjects = (array) => {
                         taskSubmitButton.innerText = 'Create Task';
                     
                     
-                        taskForm.appendChild(taskName);
-                        taskForm.appendChild(taskDueDate);
+                        taskForm.appendChild(nameDiv);
+                        taskForm.appendChild(dateDiv);
                         taskForm.appendChild(radioWrap);
-                        taskForm.appendChild(isTaskCompleted);
-                        taskForm.appendChild(taskNotes);
+                        taskForm.appendChild(completedDiv);
+                        taskForm.appendChild(notesDiv);
                         taskForm.appendChild(taskSubmitButton);
                     
                         taskModal.appendChild(taskForm);
