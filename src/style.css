@@ -142,13 +142,38 @@ font-size: 50px;
 #projectCard {
     height: 40px;
     font-size: 22px;
+    display: flex;
+}
+
+#projectDeleteButton {
+    margin-left: auto;
+    background-color: #fffdd0;
+    border: none;
 }
 
 #displayName, #displayDueDate, #displayCompleted, #displayNotes, #displayPriority, #displayProjectName {
     align-self: center;
     padding-left: 2px;
-    
+    margin-right: 5px;
+}
 
+#displayName {
+    margin-left: 3px;
+}
+
+#taskDeleteButton {
+    margin-left: 10px;
+    background-color: #fffdd0;
+    border: none;
+    margin-left: auto;
+}
+
+#taskDeleteButton:hover, #projectDeleteButton:hover {
+    border: 1px dashed gray;
+}
+
+#taskDeleteButton:active, #projectDeleteButton:active {
+color: red;
 }
 
 #taskModal {

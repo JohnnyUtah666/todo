@@ -182,11 +182,11 @@ const displayAllTasks = (array) => {
     displayCompleted.setAttribute('id', 'displayCompleted');
     displayNotes.setAttribute('id', 'displayNotes');
 
-    let displayNameContent = document.createTextNode(item.name);
-    let displayDueDateContent = document.createTextNode(item.dueDate);
-    let displayPriorityContent = document.createTextNode(item.priority);
-    let displayCompletedContent = document.createTextNode(item.completed);
-    let displayNotesContent = document.createTextNode(item.notes);
+    let displayNameContent = document.createTextNode(`${item.name} |`);
+    let displayDueDateContent = document.createTextNode(`Due: ${item.dueDate} |`);
+    let displayPriorityContent = document.createTextNode(`Priority: ${item.priority} |`);
+    let displayCompletedContent = document.createTextNode(`Completed: ${item.completed} |`);
+    let displayNotesContent = document.createTextNode(`Notes: ${item.notes}`);
 
     displayName.appendChild(displayNameContent);
     displayDueDate.appendChild(displayDueDateContent);
